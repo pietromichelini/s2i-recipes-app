@@ -105,7 +105,7 @@ After using the app a lot you may run into the following error.
 
 This is due to the fact that the [spoonacular API](https://spoonacular.com/food-api) only allows a maximum of 150 daily requests per account.
 
-If you are running the app locally, you can quickly fix this issue by following these steps: open the .env file, change the api key (there are 5 listed below the REACT_APP_API_KEY variable) and restart the local server as demonstrated below.
+If you are running the app locally, you can quickly fix this issue by following these steps: open the .env file, change the api key (there are 3 listed below the REACT_APP_API_KEY variable) and restart the local server as demonstrated below.
 
 <p align="center"><img src="https://user-images.githubusercontent.com/95065307/196182027-e4fd9d42-e344-4908-a53b-6ede03f80688.gif" /></p>
 
