@@ -43,15 +43,13 @@ const CardContainer = styled.div`
   p {
     position: absolute;
     z-index: 10;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 0);
+    left: 0;
+    top:10%;
     color: var(--gray-50);
     width: 100%;
     text-align: center;
     font-weight: 700;
     font-size: 2rem;
-    height: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
