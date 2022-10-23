@@ -43,6 +43,7 @@ Click <a target="_blank" href="https://veggieat.netlify.app/">here</a> to try it
 ### Built With
 
 * [ReactJS](https://reactjs.org/)
+* [axios](https://www.npmjs.com/package/axios)
 * [react-router-dom](https://www.npmjs.com/package/react-router-dom)
 * [styled-components](https://www.npmjs.com/package/styled-components)
 * [@splidejs/react-splide](https://www.npmjs.com/package/@splidejs/splide)
