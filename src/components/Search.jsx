@@ -35,7 +35,7 @@ const FormStyle = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:0;
+  margin: 0;
 
   div {
     position: relative;
@@ -46,8 +46,8 @@ const FormStyle = styled.form`
   }
 
   input {
-    transition:0.3s;
-    color:${props => props.onlyVeggie? "var(--green)": "var(--gray)"};
+    transition: 0.3s;
+    color: ${(props) => (props.onlyVeggie ? "var(--green)" : "var(--gray)")};
     border: none;
     background-color: var(--white);
     text-indent: 2rem;
@@ -61,7 +61,7 @@ const FormStyle = styled.form`
   }
 
   @media (max-width: 500px) {
-    input::placeholder{
+    input::placeholder {
       font-size: 1rem;
     }
   }
@@ -71,8 +71,8 @@ const FormStyle = styled.form`
     top: 50%;
     left: 0%;
     transform: translate(100%, -50%);
-    transition:0.3s;
-    color:${props => props.onlyVeggie? "var(--green)": "var(--gray)"};
+    transition: 0.3s;
+    color: ${(props) => (props.onlyVeggie ? "var(--green)" : "var(--gray)")};
   }
 `;
 

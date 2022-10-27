@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import useFetch from "../components/clientAPI";
+import useFetch from "../hooks/useFetch";
 
 function Recipe() {
   let params = useParams();
 
   const [activeTab, setActiveTab] = useState("instructions");
-  const url = `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`
 
-  const {getDetails, details, overDailyQuota} = useFetch(url, params.name)
+  const url = `https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`;
+
+  const { getDetails, details, overDailyQuota } = useFetch(url, params.name);
 
   useEffect(() => {
     getDetails();
@@ -35,8 +36,15 @@ function Recipe() {
           Ingredients
         </Button>
 
-        {overDailyQuota === true &&
-        <h2>Daily request limit to <a target="blank" href="https://spoonacular.com/food-api/">spoonacular API</a> has been reached :/ <br /> <br /> Try again tomorrow ;-)</h2>}
+        {overDailyQuota === true && (
+          <h2>
+            Daily request limit to{" "}
+            <a target="blank" href="https://spoonacular.com/food-api/">
+              spoonacular API
+            </a>{" "}
+            has been reached :/ <br /> <br /> Try again tomorrow ;-)
+          </h2>
+        )}
 
         {activeTab === "instructions" && (
           <div>
@@ -73,13 +81,13 @@ const DetailWrapper = styled.div`
   }
 
   h2 {
-    font-size:2rem;
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
 
   @media (max-width: 768px) {
-    h2{
-      font-size:1.5rem;
+    h2 {
+      font-size: 1.5rem;
     }
   }
 
@@ -163,13 +171,13 @@ const Info = styled.div`
   width: 700px;
   max-width: 100%;
 
-  h2{
-    text-align:center;
+  h2 {
+    text-align: center;
     color: var(--red);
     margin: 1rem 0;
   }
-  a{
-    color:var(--red);
+  a {
+    color: var(--red);
   }
 
   ul {
