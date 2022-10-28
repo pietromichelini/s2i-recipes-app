@@ -38,6 +38,11 @@ function useFetch(url, name) {
   useEffect(() => {
     getPopular();
   }, []);
+  function handleClickPop() {
+    localStorage.clear();
+    getPopular();
+    console.log("handling click");
+  }
   // fetch veggie
   const getVeggie = async () => {
     const check = localStorage.getItem(name);
@@ -64,6 +69,11 @@ function useFetch(url, name) {
   useEffect(() => {
     getVeggie();
   }, []);
+  function handleClickVeg() {
+    localStorage.clear();
+    getVeggie();
+    console.log("handling click");
+  }
   // function to fetch info for Cuisine
   const getCuisine = async () => {
     const check = localStorage.getItem(name);
@@ -123,8 +133,10 @@ function useFetch(url, name) {
   return {
     getPopular,
     popular,
+    handleClickPop,
     getVeggie,
     veggie,
+    handleClickVeg,
     getCuisine,
     cuisine,
     getSearched,

@@ -12,18 +12,7 @@ function Veggie(props) {
 
   const url = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${numberOfRandomRecipes}&tags=vegetarian`;
 
-  // const { getRandom, random, overDailyQuota } = useFetch(url, "veggie");
-  const { veggie, overDailyQuota } = useFetch(url, "veggie");
-
-  // useEffect(() => {
-  //   getVeggie();
-  // }, []);
-
-  function handleClick() {
-    localStorage.clear();
-    // function()
-    console.log("handling click");
-  }
+  const { veggie, handleClickVeg, overDailyQuota } = useFetch(url, "veggie");
 
   return (
     <div>
@@ -32,7 +21,7 @@ function Veggie(props) {
           <h3>Our Vegetarian Picks</h3>
           <RefreshButton
             onlyVeggie={props.onlyVeggie}
-            handleClick={handleClick}
+            handleClick={handleClickVeg}
           />
         </div>
         {overDailyQuota === true && <OverQuotaMsg />}

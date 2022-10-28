@@ -17,13 +17,7 @@ function Popular(props) {
 
   const url = props.onlyVeggie ? onlyVeggieUrl : popularUrl;
 
-  const { popular, overDailyQuota } = useFetch(url, "popular");
-
-  function handleClick() {
-    localStorage.clear();
-    // getPopular();
-    console.log("handling click");
-  }
+  const { popular, handleClickPop, overDailyQuota } = useFetch(url, "popular");
 
   return (
     <div>
@@ -32,7 +26,7 @@ function Popular(props) {
           <h3>Popular picks</h3>
           <RefreshButton
             onlyVeggie={props.onlyVeggie}
-            handleClick={handleClick}
+            handleClick={handleClickPop}
           />
         </div>
         {overDailyQuota === true && <OverQuotaMsg />}
