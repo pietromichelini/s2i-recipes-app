@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function useFetch(url, name) {
   // states to store data fetched
-  const [random, setRandom] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [veggie, setVeggie] = useState([]);
   const [cuisine, setCuisine] = useState([]);
   const [searched, setSearched] = useState([]);
   const [details, setDetails] = useState();
@@ -12,17 +13,17 @@ function useFetch(url, name) {
   // state to notify the user when no more API calls are allowed
   const [overDailyQuota, setOverDailyQuota] = useState(false);
   // function to fetch info for Popular and Veggie
-  const getRandom = async () => {
+  const getPopular = async () => {
     const check = localStorage.getItem(name);
 
     if (check) {
-      setRandom(JSON.parse(check));
+      setPopular(JSON.parse(check));
     } else {
       setOverDailyQuota(false);
       axios
         .get(url)
         .then((response) => {
-          setRandom(response.data.recipes);
+          setPopular(response.data.recipes);
           localStorage.setItem(name, JSON.stringify(response.data.recipes));
         })
         .catch((err) => {
@@ -34,6 +35,35 @@ function useFetch(url, name) {
         });
     }
   };
+  useEffect(() => {
+    getPopular();
+  }, []);
+  // fetch veggie
+  const getVeggie = async () => {
+    const check = localStorage.getItem(name);
+
+    if (check) {
+      setVeggie(JSON.parse(check));
+    } else {
+      setOverDailyQuota(false);
+      axios
+        .get(url)
+        .then((response) => {
+          setVeggie(response.data.recipes);
+          localStorage.setItem(name, JSON.stringify(response.data.recipes));
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 402) {
+            setOverDailyQuota(true);
+            console.log(err);
+          }
+        });
+    }
+  };
+  useEffect(() => {
+    getVeggie();
+  }, []);
   // function to fetch info for Cuisine
   const getCuisine = async () => {
     const check = localStorage.getItem(name);
@@ -91,8 +121,10 @@ function useFetch(url, name) {
   };
 
   return {
-    getRandom,
-    random,
+    getPopular,
+    popular,
+    getVeggie,
+    veggie,
     getCuisine,
     cuisine,
     getSearched,

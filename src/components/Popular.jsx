@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -12,21 +11,18 @@ function Popular(props) {
 
   const veggie = `&tags=vegetarian`;
 
-  const randomUrl = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${numberOfRandomRecipes}`;
+  const popularUrl = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${numberOfRandomRecipes}`;
 
-  const onlyVeggieUrl = randomUrl + veggie;
+  const onlyVeggieUrl = popularUrl + veggie;
 
-  const url = props.onlyVeggie ? onlyVeggieUrl : randomUrl;
+  const url = props.onlyVeggie ? onlyVeggieUrl : popularUrl;
 
-  const { getRandom, random, overDailyQuota } = useFetch(url, "popular");
-
-  useEffect(() => {
-    getRandom();
-  }, []);
+  const { popular, overDailyQuota } = useFetch(url, "popular");
 
   function handleClick() {
     localStorage.clear();
-    getRandom();
+    // getPopular();
+    console.log("handling click");
   }
 
   return (
@@ -58,7 +54,7 @@ function Popular(props) {
             },
           }}
         >
-          {random.map((recipe) => {
+          {popular.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card recipe={recipe} onlyVeggie={props.onlyVeggie} />

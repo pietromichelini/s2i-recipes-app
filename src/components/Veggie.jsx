@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
@@ -12,15 +12,17 @@ function Veggie(props) {
 
   const url = `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&number=${numberOfRandomRecipes}&tags=vegetarian`;
 
-  const { getRandom, random, overDailyQuota } = useFetch(url, "veggie");
+  // const { getRandom, random, overDailyQuota } = useFetch(url, "veggie");
+  const { veggie, overDailyQuota } = useFetch(url, "veggie");
 
-  useEffect(() => {
-    getRandom();
-  }, []);
+  // useEffect(() => {
+  //   getVeggie();
+  // }, []);
 
   function handleClick() {
     localStorage.clear();
-    getRandom();
+    // function()
+    console.log("handling click");
   }
 
   return (
@@ -51,7 +53,7 @@ function Veggie(props) {
             },
           }}
         >
-          {random.map((recipe) => {
+          {veggie.map((recipe) => {
             return (
               <SplideSlide key={recipe.id}>
                 <Card recipe={recipe} onlyVeggie={props.onlyVeggie} />

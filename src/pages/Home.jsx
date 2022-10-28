@@ -6,8 +6,6 @@ import React from "react";
 
 function Home(props) {
   // url per veggie
-  // funzione per veggie
-  // url per popular
   // funzione per popular
   return (
     <motion.div
