@@ -35,14 +35,15 @@ function useFetch(url, name) {
         });
     }
   };
+
   useEffect(() => {
     getPopular();
   }, []);
-  function handleClickPop() {
+
+  const handleClickPop = () => {
     localStorage.clear();
     getPopular();
-    console.log("handling click");
-  }
+  };
   // fetch veggie
   const getVeggie = async () => {
     const check = localStorage.getItem(name);
@@ -66,14 +67,15 @@ function useFetch(url, name) {
         });
     }
   };
+
   useEffect(() => {
     getVeggie();
   }, []);
-  function handleClickVeg() {
+
+  const handleClickVeg = () => {
     localStorage.clear();
     getVeggie();
-    console.log("handling click");
-  }
+  };
   // function to fetch info for Cuisine
   const getCuisine = async () => {
     const check = localStorage.getItem(name);
